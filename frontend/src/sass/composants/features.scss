@@ -1,0 +1,33 @@
+@import '../utils/variables.scss';
+
+.features {
+  display: flex;
+
+  .F-items {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 0 auto;
+    padding: 2.5rem;
+
+    img {
+      width: 152px;
+      border: 10px solid $fourthColor;
+      border-radius: 50%;
+      padding: 1rem;
+    }
+
+    h3 {
+      color: $fifthColor;
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 0.95em;
+    }
+  }
+}
