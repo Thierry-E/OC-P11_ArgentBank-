@@ -1,0 +1,14 @@
+@import '../utils/variables.scss';
+
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid $sixthColor;
+  padding: 2rem 0 1.5rem;
+
+  .footerText {
+    margin: 0;
+    padding: 0;
+  }
+}

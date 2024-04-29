@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './Header'
 import Home from '../pages/Home'
 import SignIn from '../pages/SignIn'
+import Footer from './Footer'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='.SignIn' element={<SignIn />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   )
