@@ -9,7 +9,7 @@ const Nav = () => {
         <img src={logo} alt='Logo de la société ArgentBank' />
         <h1 className='sr-only'>Argent Bank</h1>
       </NavLink>
-      <NavLink className='navSign'>
+      <NavLink to='/SignIn' className='navSign'>
         <FontAwesomeIcon icon={faCircleUser} className='faCircleUser' /> Sign in
       </NavLink>
     </nav>
