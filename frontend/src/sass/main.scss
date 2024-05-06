@@ -5,5 +5,6 @@
 @use './composants/nav';
 @use './composants/hero';
 @use './composants/features';
-@use './pages/signin';
 @use './composants/form';
+@use './pages/signin';
+@use './pages/user.scss';
