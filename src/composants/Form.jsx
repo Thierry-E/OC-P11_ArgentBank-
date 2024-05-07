@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 
@@ -20,9 +19,7 @@ const Form = () => {
           <input type='checkbox' id='remember-me' />
           <label htmlFor='remeber-me'>Remember me</label>
         </div>
-        <NavLink to='/User' className='submitButton'>
-          Sign In
-        </NavLink>
+        <button className='submitButton'>Sign In</button>
       </form>
     </section>
   )
