@@ -6,5 +6,6 @@
 @use './composants/hero';
 @use './composants/features';
 @use './composants/form';
+@use './composants/title';
+@use './composants/account';
 @use './pages/signin';
-@use './pages/user.scss';

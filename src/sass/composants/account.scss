@@ -1,20 +1,5 @@
 @import '../utils/variables.scss';
 
-.userTitle {
-  color: $secondaryColor;
-  margin-bottom: 2rem;
-
-  .editButton {
-    border-color: $fourthColor;
-    background-color: $fourthColor;
-    color: $secondaryColor;
-    font-weight: bold;
-    margin-top: 1rem;
-    padding: 10px;
-    cursor: pointer;
-  }
-}
-
 .account {
   display: flex;
   justify-content: space-between;
