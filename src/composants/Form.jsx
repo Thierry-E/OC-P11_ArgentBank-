@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 
 const Form = () => {
-  // Ajout de deux états.
+  // Ajout des états pour les données utilisateurs et le message d'erreur.
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [loginMessage, setLoginMessage] = useState('')
 
   //Ajout des fonctions "handleEmailChange" et "handlePasswordChange" permettant la mise à jour des états.
   const handleEmailChange = (event) => {
@@ -38,9 +39,13 @@ const Form = () => {
       })
       .then((data) => {
         console.log("Réponse de l'API :", data)
+        setLoginMessage('Connexion réussie !')
       })
       .catch((error) => {
         console.log('Error while signin in :', error)
+        setLoginMessage(
+          'Echec de la connexion, veuillez vérifiez vos identifiants.'
+        )
       })
   }
 
@@ -74,6 +79,8 @@ const Form = () => {
         <button className='submitButton' onClick={handleAuth}>
           Sign In
         </button>
+        {/* Message de connexion */}
+        <p>{loginMessage}</p>
       </form>
     </section>
   )

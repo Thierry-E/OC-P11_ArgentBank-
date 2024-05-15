@@ -54,4 +54,10 @@
     color: $secondaryColor;
     text-decoration: underline;
   }
+
+  p {
+    color: $primaryColor;
+    font-size: 1.3em;
+    margin-top: 20px;
+  }
 }
