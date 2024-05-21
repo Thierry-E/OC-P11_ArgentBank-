@@ -11,12 +11,12 @@ const Form = () => {
   //Ajout des fonctions "handleEmailChange" et "handlePasswordChange" permettant la mise à jour des états.
   const handleEmailChange = (event) => {
     setEmail(event.target.value)
-    console.log('email :', event.target.value)
+    // console.log('email :', event.target.value)
   }
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value)
-    console.log('password :', event.target.value)
+    // console.log('password :', event.target.value)
   }
 
   // Ajout de la fonction "handleAuth" pour envoyer à l'API les données d'authentification en utilisant la valeur actuelle des états.
