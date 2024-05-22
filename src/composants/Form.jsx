@@ -1,12 +1,21 @@
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom'
+// Import de Redux
+import { useDispatch, useSelector } from 'react-redux'
+import { loginStart, loginSuccess, loginFailure } from '../redux/authSlice'
 
 const Form = () => {
   // Ajout des états pour les données utilisateurs et le message d'erreur.
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loginMessage, setLoginMessage] = useState('')
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const isAuthenticated = useSelector((state) => {
+    state.auth.isAuthenticated
+  })
 
   //Ajout des fonctions "handleEmailChange" et "handlePasswordChange" permettant la mise à jour des états.
   const handleEmailChange = (event) => {
@@ -24,6 +33,8 @@ const Form = () => {
   const handleAuth = (event) => {
     event.preventDefault()
 
+    dispatch(loginStart())
+
     fetch('http://localhost:3001/api/v1/user/login', {
       method: 'POST',
       headers: {
@@ -39,14 +50,22 @@ const Form = () => {
       })
       .then((data) => {
         console.log("Réponse de l'API :", data)
+        dispatch(loginSuccess(data.token))
         setLoginMessage('Connexion réussie !')
+        navigate('/User')
       })
       .catch((error) => {
         console.log('Error while signin in :', error)
+        dispatch(loginFailure())
         setLoginMessage(
           'Echec de la connexion, veuillez vérifiez vos identifiants.'
         )
       })
+  }
+
+  if (isAuthenticated) {
+    // Si l'utilisateur est déjà connecté, il est redirigé sur la page "user"
+    navigate('/User')
   }
 
   return (
