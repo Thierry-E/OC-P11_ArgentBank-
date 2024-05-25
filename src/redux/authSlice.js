@@ -6,6 +6,7 @@ const initialState = {
   token: null,
   loading: false,
   error: null,
+  user: null,
 }
 
 // Création du "Slice" soit de la partie gérant l'authentification du store
@@ -26,6 +27,10 @@ const authSlice = createSlice({
       state.token = action.payload
     },
 
+    setUser(state, action) {
+      state.user = action.payload
+    },
+
     // Lorsque la connexion échoue le token n'est pas stocker et un message d'erreur envoyé.
     loginFailure(state, action) {
       state.loading = false
@@ -40,7 +45,7 @@ const authSlice = createSlice({
   },
 })
 
-export const { loginStart, loginSuccess, loginFailure, logOut } =
+export const { loginStart, loginSuccess, loginFailure, logOut, setUser } =
   authSlice.actions
 
 export default authSlice.reducer

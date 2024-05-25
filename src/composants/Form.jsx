@@ -50,7 +50,7 @@ const Form = () => {
       })
       .then((data) => {
         console.log("Réponse de l'API :", data)
-        dispatch(loginSuccess(data.token))
+        dispatch(loginSuccess(data.body.token))
         setLoginMessage('Connexion réussie !')
         navigate('/User')
       })
