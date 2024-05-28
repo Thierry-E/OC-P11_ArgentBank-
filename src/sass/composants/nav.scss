@@ -6,8 +6,19 @@ nav {
   align-items: center;
   padding: 5px 20px;
 
-  &a {
+  a {
     color: $thirdColor;
+    text-decoration: none;
+
+    &:visited,
+    &:active,
+    &:focus {
+      color: $thirdColor; // Assurez-vous que cette couleur est celle souhaitée pour les états visités, actifs et focus
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .navLogo img {
@@ -31,16 +42,44 @@ nav {
 
   .navSign {
     margin-right: 1rem;
+    font-size: 1.1em;
     font-weight: bold;
     color: $thirdColor;
-
-    &:hover {
-      text-decoration: underline;
-    }
+    display: flex;
+    align-items: center;
 
     .faCircleUser {
-      font-size: 20px;
-      padding-right: 2px;
+      font-size: 1.5em;
+      padding-right: 0.6rem;
+    }
+
+    .userFirstName {
+      padding-right: 1.5rem;
+      font-size: 1.1em;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .faSignOut {
+      font-size: 1.1em;
+      margin-right: 0.5rem;
+    }
+
+    .faSignOutIcon {
+      color: $thirdColor;
+      padding-right: 0.5rem;
+
+      &:visited,
+      &:active,
+      &:focus {
+        color: $thirdColor;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }
