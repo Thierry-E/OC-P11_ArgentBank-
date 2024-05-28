@@ -28,7 +28,7 @@ const User = () => {
     },
   ]
 
-  //Récupération de la valeur du token et appel de la fonction dispatch pour envoyer des actions au store.
+  //Récupération de la valeur du token et de l'authentification, appel de la fonction dispatch pour envoyer des actions au store et de la fonction useNavigate pour rediriger l'utilisateur vers une page.
   const token = useSelector((state) => state.auth.token)
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
   const dispatch = useDispatch()
@@ -51,7 +51,7 @@ const User = () => {
           return response.json()
         })
         .then((data) => {
-          dispatch(setUser(data.body)) // demande à Redusx d'uriliser l'action "setUser" pour mettre à jour l'état global.
+          dispatch(setUser(data.body)) // demande à Redusx d'utiliser l'action "setUser" pour mettre à jour l'état global.
           console.log('body :', data.body)
         })
         .catch((error) => {
