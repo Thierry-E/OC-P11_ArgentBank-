@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Account from '../composants/Account'
 import Title from '../composants/Title'
 //Import Redux
@@ -29,37 +30,43 @@ const User = () => {
 
   //Récupération de la valeur du token et appel de la fonction dispatch pour envoyer des actions au store.
   const token = useSelector((state) => state.auth.token)
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   // Récupération des données utilisateurs, appel à l'api lors du rendu initial et à chaque fois que le token ou le dispach change via le tableau de dépendance.
   useEffect(() => {
-    const fetchUserProfile = async () => {
-      try {
-        const response = await fetch(
-          'http://localhost:3001/api/v1/user/profile',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}`,
-            },
+    const fetchUserProfile = () => {
+      fetch('http://localhost:3001/api/v1/user/profile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Erreur lors de la requête')
           }
-        )
-
-        if (!response.ok) {
-          throw new Error('Erreur lors de la requête')
-        }
-
-        const data = await response.json()
-        dispatch(setUser(data.body)) // demande à Redusx d'uriliser l'action "setUser" pour mettre à jour l'état global.
-        console.log('body :', data.body)
-      } catch (error) {
-        console.error('Erreur:', error)
-      }
+          return response.json()
+        })
+        .then((data) => {
+          dispatch(setUser(data.body)) // demande à Redusx d'uriliser l'action "setUser" pour mettre à jour l'état global.
+          console.log('body :', data.body)
+        })
+        .catch((error) => {
+          console.error('Erreur:', error)
+        })
     }
 
     fetchUserProfile()
   }, [token, dispatch]) // Tableau de dépendance.
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/')
+    }
+  }, [isAuthenticated, navigate])
 
   return (
     <main className='bgDark'>

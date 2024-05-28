@@ -1,6 +1,4 @@
-import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
 import logo from '../assets/img/argentBankLogo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -12,11 +10,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logOut } from '../redux/authSlice'
 
 const Nav = () => {
-  // Récupération des données utilisateur, du token et de l'état de connection et stockage des valeurs dans des variables.
+  // Récupération des données utilisateur, du token et stockage des valeurs dans des variables.
   const userData = useSelector((state) => state.auth.user)
   // console.log('userData :', userData)
-
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
 
   const token = useSelector((state) => state.auth.token)
 
@@ -24,20 +20,11 @@ const Nav = () => {
 
   const dispatch = useDispatch()
 
-  const navigate = useNavigate()
-
   //Fonction de deconnexion
   const handleSignOut = () => {
     // console.log('Déconnexion en cours...')
     dispatch(logOut())
   }
-
-  // Redirection après déconnexion
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/')
-    }
-  }, [isAuthenticated, navigate])
 
   return (
     <nav>
