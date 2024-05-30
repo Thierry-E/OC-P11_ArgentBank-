@@ -15,6 +15,50 @@
   }
 
   .userForm {
-    border: 2px dashed red;
+    margin: 0 auto 20px auto;
+    width: 80%;
+    background: $secondaryColor;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .userFormTitle {
+      color: $primaryColor;
+      padding: 20px 0;
+    }
+
+    .userFormLabel {
+      color: $primaryColor;
+      margin-right: 0.5em;
+      font-size: 1.1em;
+    }
+
+    .userFormInput {
+      width: 10em;
+      padding: 8px 10px;
+      margin-bottom: 15px;
+      border: 1px solid $primaryColor;
+      border-radius: 5px;
+      outline: none;
+      font-size: 1.1em;
+    }
+
+    .userFormButton {
+      margin-bottom: 20px;
+
+      .userFormSubmit,
+      .userFormCancel {
+        width: 8em;
+        background: $fourthColor;
+        padding: 8px 10px;
+        margin-right: 20px;
+        color: $secondaryColor;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1em;
+        cursor: pointer;
+      }
+    }
   }
 }

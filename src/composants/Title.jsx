@@ -19,17 +19,57 @@ const Title = () => {
       )}
       {isEditingUser && (
         <form className='userForm'>
-          <input type='text' name='userName' value='userData.userName' />
-          <input type='text' name='firstName' value='userData.firstName' />
-          <input type='text' name='lastName' value='userData.lastName' />
-          <input type='submit' value='Enregistrer' className='userFormSubmit' />
-          <button
-            type='button'
-            onClick={() => setIsEditingUser(false)}
-            className='userFormButton'
-          >
-            Annuler
-          </button>
+          <h2 className='userFormTitle'>Edit user info</h2>
+          <div>
+            <label htmlFor='username' className='userFormLabel'>
+              User Name:
+            </label>
+            <input
+              type='text'
+              id='username'
+              name='userName'
+              value={userData.userName}
+              className='userFormInput'
+            />
+          </div>
+          <div>
+            <label htmlFor='firstname' className='userFormLabel'>
+              Firts name:
+            </label>
+            <input
+              type='text'
+              id='firstname'
+              name='firstName'
+              value={userData.firstName}
+              className='userFormInput'
+            />
+          </div>
+          <div>
+            <label htmlFor='lastname' className='userFormLabel'>
+              Last name:
+            </label>
+            <input
+              type='text'
+              id='lastname'
+              name='lastName'
+              value={userData.lastName}
+              className='userFormInput'
+            />
+          </div>
+          <div className='userFormButton'>
+            <input
+              type='submit'
+              value='Enregistrer'
+              className='userFormSubmit'
+            />
+            <button
+              type='button'
+              onClick={() => setIsEditingUser(false)}
+              className='userFormCancel'
+            >
+              Annuler
+            </button>
+          </div>
         </form>
       )}
       <button className='editButton' onClick={() => setIsEditingUser(true)}>
