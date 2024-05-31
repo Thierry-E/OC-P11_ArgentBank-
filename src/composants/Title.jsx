@@ -1,13 +1,60 @@
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
+// Import redux
+import { useDispatch, useSelector } from 'react-redux'
+import { setUser } from '../redux/authSlice'
 
 const Title = () => {
   const [isEditingUser, setIsEditingUser] = useState(false)
+  const [userName, setUserName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const userData = useSelector((state) => state.auth.user)
+  const token = useSelector((state) => state.auth.token)
+  // console.log('profileToken :', token)
+  const dispatch = useDispatch()
 
-  // Ajouter une vérification pour s'assurer que userData est défini
+  // Mise à jour des données utilisateurs lorsque l'un des élément du tableau de dépendance change.
+  useEffect(() => {
+    if (userData && isEditingUser) {
+      setUserName(userData.userName || '')
+      setFirstName(userData.firstName || '')
+      setLastName(userData.lastName || '')
+    }
+  }, [userData, isEditingUser])
+
   if (!userData) {
     return <div>Loading...</div>
+  }
+
+  // Soumission du formulaire à l'API via l'envoie d'une requête, si cette dernière est réussie l'état de Redux est mise à jour avec les nouvelles informations utilisateurs.
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    const formData = {
+      userName,
+      firstName,
+      lastName,
+    }
+
+    fetch('http://localhost:3001/api/v1/user/profile', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data)
+        dispatch(setUser({ userName, firstName, lastName }))
+        setIsEditingUser(false)
+      })
+      .catch((error) => {
+        console.log('Error:', error)
+      })
   }
 
   return (
@@ -18,7 +65,7 @@ const Title = () => {
         </h1>
       )}
       {isEditingUser && (
-        <form className='userForm'>
+        <form className='userForm' onSubmit={handleSubmit}>
           <h2 className='userFormTitle'>Edit user info</h2>
           <div>
             <label htmlFor='username' className='userFormLabel'>
@@ -28,20 +75,25 @@ const Title = () => {
               type='text'
               id='username'
               name='userName'
-              value={userData.userName}
+              value={userName}
               className='userFormInput'
+              //Gère les changements dans le champ de saisie de l'utilisateur.
+              // À chaque modification du contenu du champ, la fonction setUserName est appelée
+              // pour mettre à jour la valeur du champ userName dans le composant.
+              onChange={(event) => setUserName(event.target.value)}
             />
           </div>
           <div>
             <label htmlFor='firstname' className='userFormLabel'>
-              Firts name:
+              First name:
             </label>
             <input
               type='text'
               id='firstname'
               name='firstName'
-              value={userData.firstName}
+              value={firstName}
               className='userFormInput'
+              onChange={(event) => setFirstName(event.target.value)}
             />
           </div>
           <div>
@@ -52,8 +104,9 @@ const Title = () => {
               type='text'
               id='lastname'
               name='lastName'
-              value={userData.lastName}
+              value={lastName}
               className='userFormInput'
+              onChange={(event) => setLastName(event.target.value)}
             />
           </div>
           <div className='userFormButton'>

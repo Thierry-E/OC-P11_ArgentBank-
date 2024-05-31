@@ -36,8 +36,8 @@ const Nav = () => {
         {token && userData ? (
           <>
             <FontAwesomeIcon icon={faCircleUser} className='faCircleUser' />
-            <NavLink to='/User' className='userFirstName'>
-              {userData.firstName}
+            <NavLink to='/User' className='userName'>
+              {userData.userName}
             </NavLink>
             <NavLink className='faSignOut' onClick={handleSignOut}>
               <FontAwesomeIcon
