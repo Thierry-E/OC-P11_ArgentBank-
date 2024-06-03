@@ -34,6 +34,13 @@ const User = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  // Redirection si l'utilisateur n'est pas authentifié ou si le token est manquant
+  useEffect(() => {
+    if (!isAuthenticated || !token) {
+      navigate('/')
+    }
+  }, [isAuthenticated, token, navigate])
+
   // Récupération des données utilisateurs, appel à l'api lors du rendu initial et à chaque fois que le token ou le dispach change via le tableau de dépendance.
   useEffect(() => {
     if (!token) {
