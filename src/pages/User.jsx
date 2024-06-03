@@ -36,6 +36,10 @@ const User = () => {
 
   // Récupération des données utilisateurs, appel à l'api lors du rendu initial et à chaque fois que le token ou le dispach change via le tableau de dépendance.
   useEffect(() => {
+    if (!token) {
+      return
+    }
+
     const fetchUserProfile = () => {
       fetch('http://localhost:3001/api/v1/user/profile', {
         method: 'POST',

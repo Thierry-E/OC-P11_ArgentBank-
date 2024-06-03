@@ -13,14 +13,18 @@ const Title = () => {
   // console.log('profileToken :', token)
   const dispatch = useDispatch()
 
-  // Mise à jour des données utilisateurs lorsque l'un des élément du tableau de dépendance change.
+  // Vérification de la présence du token ou des données utilisateurs avant l'appel à l'API et Mise à jour des données utilisateurs lorsque l'un des élément du tableau de dépendance change.
   useEffect(() => {
+    if (!token || !userData) {
+      return
+    }
+
     if (userData && isEditingUser) {
       setUserName(userData.userName || '')
       setFirstName(userData.firstName || '')
       setLastName(userData.lastName || '')
     }
-  }, [userData, isEditingUser])
+  }, [userData, isEditingUser, token])
 
   if (!userData) {
     return <div>Loading...</div>
