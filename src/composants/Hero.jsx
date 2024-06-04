@@ -2,7 +2,7 @@ const Hero = () => {
   return (
     <section className='hero'>
       <img
-        src='../../src/assets/img/bank-tree.jpeg'
+        src='../../src/assets/img/bank-tree.webp'
         srcSet="
         '../../src/assets/img/bank-tree-1100.webp 1100w'
         '../../src/assets/img/bank-tree-700.webp 700w'
