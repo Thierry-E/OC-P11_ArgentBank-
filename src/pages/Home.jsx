@@ -3,7 +3,7 @@ import Hero from '../composants/Hero'
 
 const Home = () => {
   return (
-    <main>
+    <main className='bg'>
       <Hero />
       <Features />
     </main>
