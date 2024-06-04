@@ -96,7 +96,7 @@ const Title = () => {
               id='firstname'
               name='firstName'
               value={firstName}
-              disabled='true'
+              disabled={true}
               className='userFormInput'
               onChange={(event) => setFirstName(event.target.value)}
             />
@@ -110,7 +110,7 @@ const Title = () => {
               id='lastname'
               name='lastName'
               value={lastName}
-              disabled='true'
+              disabled={true}
               className='userFormInput'
               onChange={(event) => setLastName(event.target.value)}
             />
