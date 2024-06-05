@@ -23,6 +23,13 @@
     justify-content: center;
     align-items: center;
 
+    .userFormWrapper {
+      @media screen and (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
     .userFormTitle {
       color: $primaryColor;
       padding: 20px 0;
@@ -32,6 +39,7 @@
       color: $primaryColor;
       margin-right: 0.5em;
       font-size: 1.1em;
+      margin-bottom: 0.5rem;
     }
 
     .userFormInput {
@@ -58,6 +66,12 @@
         border-radius: 5px;
         font-size: 1.1em;
         cursor: pointer;
+      }
+    }
+
+    .userFormCancel {
+      @media screen and (max-width: 768px) {
+        margin-top: 0.5rem;
       }
     }
   }

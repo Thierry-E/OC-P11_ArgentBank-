@@ -71,7 +71,7 @@ const Title = () => {
       {isEditingUser && (
         <form className='userForm' onSubmit={handleSubmit}>
           <h2 className='userFormTitle'>Edit user info</h2>
-          <div>
+          <div className='userFormWrapper'>
             <label htmlFor='username' className='userFormLabel'>
               User Name:
             </label>
@@ -87,7 +87,7 @@ const Title = () => {
               onChange={(event) => setUserName(event.target.value)}
             />
           </div>
-          <div>
+          <div className='userFormWrapper'>
             <label htmlFor='firstname' className='userFormLabel'>
               First name:
             </label>
@@ -101,7 +101,7 @@ const Title = () => {
               onChange={(event) => setFirstName(event.target.value)}
             />
           </div>
-          <div>
+          <div className='userFormWrapper'>
             <label htmlFor='lastname' className='userFormLabel'>
               Last name:
             </label>

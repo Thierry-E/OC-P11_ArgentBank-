@@ -3,6 +3,11 @@
 .features {
   display: flex;
 
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    padding-top: 35px;
+  }
+
   .F-items {
     width: 33%;
     display: flex;
@@ -11,6 +16,12 @@
     gap: 1.2rem;
     margin: 0 auto;
     padding: 2.5rem;
+
+    @media screen and (max-width: 768px) {
+      padding: 3rem 1rem;
+      width: 100%;
+      gap: 1rem;
+    }
 
     img {
       width: 152px;

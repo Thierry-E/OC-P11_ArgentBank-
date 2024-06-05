@@ -6,6 +6,10 @@ nav {
   align-items: center;
   padding: 5px 20px;
 
+  @media screen and (max-width: 768px) {
+    padding-top: 1rem;
+  }
+
   a {
     color: $thirdColor;
     text-decoration: none;
@@ -24,6 +28,10 @@ nav {
   .navLogo img {
     width: 200px;
     max-width: 100%;
+
+    @media screen and (max-width: 768px) {
+      width: 130px;
+    }
   }
 
   .navLogo .sr-only {
@@ -48,14 +56,27 @@ nav {
     display: flex;
     align-items: center;
 
+    @media screen and (max-width: 768px) {
+      margin-right: 0;
+    }
+
     .faCircleUser {
       font-size: 1.5em;
       padding-right: 0.6rem;
+
+      @media screen and (max-width: 768px) {
+        font-size: 1.2em;
+      }
     }
 
     .userName {
       padding-right: 1.5rem;
       font-size: 1.1em;
+
+      @media screen and (max-width: 768px) {
+        padding-right: 0.5rem;
+        font-size: 1em;
+      }
 
       &:hover {
         text-decoration: underline;
@@ -65,11 +86,20 @@ nav {
     .faSignOut {
       font-size: 1.1em;
       margin-right: 0.5rem;
+
+      @media screen and (max-width: 768px) {
+        font-size: 0.8em;
+        margin-right: 0.3rem;
+      }
     }
 
     .faSignOutIcon {
       color: $thirdColor;
       padding-right: 0.5rem;
+
+      @media screen and (max-width: 768px) {
+        padding-right: 0.3rem;
+      }
 
       &:visited,
       &:active,
