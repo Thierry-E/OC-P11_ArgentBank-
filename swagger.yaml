@@ -256,9 +256,6 @@ definitions:
               type: string
             accountName:
               type: string
-            balance:
-              type: number
-              description: The balance of the account
             transactions:
               type: array
               items:
@@ -272,6 +269,9 @@ definitions:
                     type: number
                   description:
                     type: string
+                  balance:
+                    type: number
+                    description: The balance of the account
   TransactionDetailsResponse:
     type: object
     properties:
@@ -306,12 +306,6 @@ definitions:
   UpdateTransaction:
     type: object
     properties:
-      date:
-        type: string
-      amount:
-        type: number
-      description:
-        type: string
       note:
         type: string
         description: A note for the transaction
