@@ -67,7 +67,7 @@ paths:
       description: API for fetching a user profile
       responses:
         '200':
-          description: User profile retrieved successully
+          description: User profile retrieved successfully
           schema:
             $ref: '#/definitions/ApiResponse'
         '400':
@@ -92,7 +92,7 @@ paths:
         - application/json
       responses:
         '200':
-          description: User profile retrieved successully
+          description: User profile updated successfully
           schema:
             $ref: '#/definitions/ApiResponse'
         '400':
@@ -123,7 +123,7 @@ paths:
         '400':
           description: Invalid User ID
         '404':
-          description: Not Found  
+          description: Not Found
         '500':
           description: Internal Server Error
   /transactions/{transactionId}:
@@ -179,30 +179,6 @@ paths:
           description: Transaction updated successfully
           schema:
             $ref: '#/definitions/TransactionDetailsResponse'
-        '400':
-          description: Invalid Transaction ID
-        '404':
-          description: Transaction not found
-        '500':
-          description: Internal Server Error
-    delete:
-      security:
-        - Bearer: []
-      tags:
-        - Transactions
-      summary: Delete transaction details
-      description: API to delete the details of a specific transaction
-      parameters:
-        - in: path
-          name: transactionId
-          type: string
-          required: true
-          description: ID of the transaction
-      produces:
-        - application/json
-      responses:
-        '204':
-          description: Transaction deleted successfully
         '400':
           description: Invalid Transaction ID
         '404':
@@ -280,6 +256,9 @@ definitions:
               type: string
             accountName:
               type: string
+            balance:
+              type: number
+              description: The balance of the account
             transactions:
               type: array
               items:
@@ -315,6 +294,15 @@ definitions:
             type: string
           accountName:
             type: string
+          balance:
+            type: number
+            description: The balance after the transaction
+          category:
+            type: string
+            description: The category of the transaction
+          note:
+            type: string
+            description: A note for the transaction
   UpdateTransaction:
     type: object
     properties:
@@ -324,3 +312,9 @@ definitions:
         type: number
       description:
         type: string
+      note:
+        type: string
+        description: A note for the transaction
+      category:
+        type: string
+        description: The category of the transaction
